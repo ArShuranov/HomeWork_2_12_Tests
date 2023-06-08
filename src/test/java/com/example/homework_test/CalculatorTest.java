@@ -4,6 +4,13 @@ import com.example.homework_test.exception.NoParam;
 import com.example.homework_test.service.serviceImpl.CalculatorServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
@@ -59,4 +66,76 @@ public class CalculatorTest {
 
     }
 
+
+    //Парметризованные тесты
+
+    public static Stream<Arguments> numsForTestPlus() {
+        return  Stream.of(
+                Arguments.of(4, 2, "4 + 2 = 6"),
+                Arguments.of(5, 1, "5 + 1 = 6"),
+                Arguments.of(1, 2, "1 + 2 = 3")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("numsForTestPlus")
+    public void plusParametrized(int a, int b, String result) {
+        CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
+        String actual = calculatorService.plus(a,b);
+        assertEquals(result, actual);
+
+    }
+/////////////////////////////////////////////////////////////
+
+    public static Stream<Arguments> numsForTestMinus() {
+        return  Stream.of(
+                Arguments.of(4, 2, "4 - 2 = 2"),
+                Arguments.of(5, 1, "5 - 1 = 4"),
+                Arguments.of(1, 2, "1 - 2 = -1")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("numsForTestMinus")
+    public void minusParametrized(int a, int b, String result) {
+        CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
+        String actual = calculatorService.minus(a,b);
+        assertEquals(result, actual);
+
+    }
+/////////////////////////////////////////////////////////////
+
+    public static Stream<Arguments> numsForTestMultiply() {
+        return  Stream.of(
+                Arguments.of(4, 2, "4 * 2 = 8"),
+                Arguments.of(5, 1, "5 * 1 = 5"),
+                Arguments.of(1, 2, "1 * 2 = 2")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("numsForTestMultiply")
+    public void multiplyParametrized(int a, int b, String result) {
+        CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
+        String actual = calculatorService.multiply(a,b);
+        assertEquals(result, actual);
+
+    }
+/////////////////////////////////////////////////////////////
+public static Stream<Arguments> numsForTestDivide() {
+    return  Stream.of(
+            Arguments.of(4, 2, "4 / 2 = 2"),
+            Arguments.of(5, 1, "5 / 1 = 5"),
+            Arguments.of(1, 2, "1 / 2 = 0")
+    );
+}
+
+    @ParameterizedTest
+    @MethodSource("numsForTestDivide")
+    public void divideParametrized(int a, int b, String result) {
+        CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
+        String actual = calculatorService.divide(a,b);
+        assertEquals(result, actual);
+
+    }
 }
