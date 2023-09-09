@@ -1,5 +1,6 @@
 package com.example.homework_test.service;
 
+//interface methods: sum, subtraction, multiply, divide
 public interface CalculatorService {
 
     String greeting();

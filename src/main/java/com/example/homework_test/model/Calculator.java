@@ -1,5 +1,6 @@
 package com.example.homework_test.model;
 
+//model calculator
 public class Calculator {
     Integer num1;
     Integer num2;

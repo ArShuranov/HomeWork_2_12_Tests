@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -79,7 +78,7 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @MethodSource("numsForTestPlus")
-    public void plusParametrized(int a, int b, String result) {
+        public void plusParametrized(int a, int b, String result) {
         CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
         String actual = calculatorService.plus(a,b);
         assertEquals(result, actual);

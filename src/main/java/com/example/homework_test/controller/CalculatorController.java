@@ -3,6 +3,8 @@ package com.example.homework_test.controller;
 import com.example.homework_test.service.CalculatorService;
 import org.springframework.web.bind.annotation.*;
 
+// controller for web application
+
 @RestController
 @RequestMapping("/calculator")
 public class CalculatorController {

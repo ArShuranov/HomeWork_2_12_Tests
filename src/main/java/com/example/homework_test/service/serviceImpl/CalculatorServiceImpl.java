@@ -4,6 +4,7 @@ import com.example.homework_test.exception.NoParam;
 import com.example.homework_test.service.CalculatorService;
 import org.springframework.stereotype.Service;
 
+//implementation methods interface CalculatorService
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
     @Override
@@ -11,13 +12,14 @@ public class CalculatorServiceImpl implements CalculatorService {
         return "Добро пожаловать в калькулятор!";
     }
 
-    //проверка параметра на null
+    //util method check null
     private void CheckParam(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
             throw new NoParam();
         }
     }
 
+    //take two numbers (do + - * /) and return string ("num1 +(...) num2 = result")
     @Override
     public String plus(Integer num1, Integer num2) {
         CheckParam(num1, num2);
